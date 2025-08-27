@@ -23,12 +23,36 @@ class ListCell: UITableViewCell {
         setupViews()
     }
     
+    override func layoutSubviews() {
+            super.layoutSubviews()
+            
+            // Make circular now that the frame is set
+            photo.layer.cornerRadius = photo.frame.size.width / 2
+            photo.clipsToBounds = true
+            photo.contentMode = .scaleAspectFill
+            
+            country.layer.cornerRadius = country.frame.size.width / 2
+            country.clipsToBounds = true
+            country.contentMode = .scaleAspectFill
+        }
+    
     func setupViews() {
         selectionStyle = .default
         
         photo.translatesAutoresizingMaskIntoConstraints = false
-        photo.layer.cornerRadius = 30
-        photo.clipsToBounds = true
+//        photo.layer.cornerRadius = 30
+//        photo.clipsToBounds = true
+
+        // Set frame or constraints first so it has a width/height
+//        photo.frame = CGRect(x: 50, y: 50, width: 70, height: 70)
+
+        // Make it circular
+//        photo.layer.cornerRadius = 35
+//        photo.clipsToBounds = true
+//
+//        // Scale image properly
+//        photo.contentMode = .scaleAspectFill
+
             
         // Name
         name.font = .boldSystemFont(ofSize: 17)
@@ -45,7 +69,20 @@ class ListCell: UITableViewCell {
             
         // Flag
         country.translatesAutoresizingMaskIntoConstraints = false
-        country.contentMode = .scaleAspectFit
+        // Set frame or constraints first so it has a width/height
+//        country.frame = CGRect(x: 50, y: 50, width: 36, height: 36)
+
+        // Make it circular
+//        country.layer.cornerRadius = 18
+//        country.clipsToBounds = true
+//
+//        // Scale image properly
+//        country.contentMode = .scaleAspectFill
+
+//        country.layer.cornerRadius = 15
+//        country.clipsToBounds = true
+//        country.contentMode = .scaleAspectFit
+        
             
         contentView.addSubview(photo)
         contentView.addSubview(name)
@@ -55,8 +92,8 @@ class ListCell: UITableViewCell {
         NSLayoutConstraint.activate([
             photo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             photo.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            photo.widthAnchor.constraint(equalToConstant: 60),
-            photo.heightAnchor.constraint(equalToConstant: 60),
+            photo.widthAnchor.constraint(equalToConstant: 70),
+            photo.heightAnchor.constraint(equalToConstant: 70),
             
             name.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
             name.leadingAnchor.constraint(equalTo: photo.trailingAnchor, constant: 12),
@@ -67,8 +104,8 @@ class ListCell: UITableViewCell {
             
             country.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             country.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            country.widthAnchor.constraint(equalToConstant: 30),
-            country.heightAnchor.constraint(equalToConstant: 20),
+            country.widthAnchor.constraint(equalToConstant: 26),
+            country.heightAnchor.constraint(equalToConstant: 26),
             ])
         
 //        name.fon

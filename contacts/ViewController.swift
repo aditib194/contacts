@@ -14,13 +14,13 @@ struct Contact {
     var country: String?
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class ContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     let headerView = UIView()
     
     let tableView: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.rowHeight = 79
+        tv.rowHeight = 90
         return tv
     }()
     
@@ -44,13 +44,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.register(ListCell.self, forCellReuseIdentifier: "ListCell")
         // Do any additional setup after loading the view.
         
-    let objContact1 = Contact(photo: "person", name: "Mohammad Hussain", role: "SEO Specialist", country: "Belgium")
-    let objContact2 = Contact(photo: "person", name: "John Young", role: "Interactive Designer", country: "Belgium")
-    let objContact3 = Contact(photo: "person", name: "Tamilarasi Mohan", role: "Architect", country: "Belgium")
-    let objContact4 = Contact(photo: "person", name: "Kim Yu", role: "Economist", country: "Belgium")
-    let objContact5 = Contact(photo: "person", name: "Derek Fowler", role: "Web Strategist", country: "Belgium")
-    let objContact6 = Contact(photo: "person", name: "Shreya Nithin", role: "Product Designer", country: "Belgium")
-    let objContact7 = Contact(photo: "person", name: "Emily Adams", role: "Editor", country: "Belgium")
+    let objContact1 = Contact(photo: "Person1", name: "Mohammad Hussain", role: "SEO Specialist", country: "Belgium")
+    let objContact2 = Contact(photo: "Person2", name: "John Young", role: "Interactive Designer", country: "Albania")
+    let objContact3 = Contact(photo: "Person3", name: "Tamilarasi Mohan", role: "Architect", country: "Argentina")
+    let objContact4 = Contact(photo: "Person4", name: "Kim Yu", role: "Economist", country: "Togo")
+    let objContact5 = Contact(photo: "Person5", name: "Derek Fowler", role: "Web Strategist", country: "Transnistria")
+    let objContact6 = Contact(photo: "Person6", name: "Shreya Nithin", role: "Product Designer", country: "San Marino")
+    let objContact7 = Contact(photo: "Person7", name: "Emily Adams", role: "Editor", country: "Republic of Congo")
         contactList.append(objContact1)
         contactList.append(objContact2)
         contactList.append(objContact3)
@@ -85,7 +85,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        print("hello")
     }
     
     func setUpHeader() {
@@ -120,14 +119,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.name.text = contact.name
         cell.role.text = contact.role
         
-//        if let imageName = contact.photo { // assuming your Contact has a photoName String
-//            cell.photo.image = UIImage(named: imageName)
-//        }
-//        if let imageName = contact.country { // assuming your Contact has a photoName String
-//            cell.country.image = UIImage(named: country)
-//        }
-        cell.photo.image = UIImage(systemName: "person.circle")
-        cell.country.image = UIImage(systemName: "person.circle")
+        cell.photo.image = UIImage(named: contact.photo!)
+        cell.country.image = UIImage(named: contact.country!)
         
         
         print(indexPath.row)
