@@ -7,14 +7,7 @@
 
 import UIKit
 
-struct Contact {
-    var photo: String?
-    var name: String?
-    var role: String?
-    var country: String?
-}
-
-class ContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class ContactsViewController: UIViewController, UISearchBarDelegate {
     let headerView = UIView()
     
     let tableView: UITableView = {
@@ -43,24 +36,51 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         searchBar.delegate = self
         tableView.register(ListCell.self, forCellReuseIdentifier: "ListCell")
         // Do any additional setup after loading the view.
-        
-    let objContact1 = Contact(photo: "Person1", name: "Mohammad Hussain", role: "SEO Specialist", country: "Belgium")
-    let objContact2 = Contact(photo: "Person2", name: "John Young", role: "Interactive Designer", country: "Albania")
-    let objContact3 = Contact(photo: "Person3", name: "Tamilarasi Mohan", role: "Architect", country: "Argentina")
-    let objContact4 = Contact(photo: "Person4", name: "Kim Yu", role: "Economist", country: "Togo")
-    let objContact5 = Contact(photo: "Person5", name: "Derek Fowler", role: "Web Strategist", country: "Transnistria")
-    let objContact6 = Contact(photo: "Person6", name: "Shreya Nithin", role: "Product Designer", country: "San Marino")
-    let objContact7 = Contact(photo: "Person7", name: "Emily Adams", role: "Editor", country: "Republic of Congo")
-        contactList.append(objContact1)
-        contactList.append(objContact2)
-        contactList.append(objContact3)
-        contactList.append(objContact4)
-        contactList.append(objContact5)
-        contactList.append(objContact6)
-        contactList.append(objContact7)
+        contactList = Contact.contactList()
         
         filteredContactList = contactList
     }
+}
+
+// MARK: - UITableView DataSource and UITableViewDelegate
+extension ContactsViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        filteredContactList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListCell else {
+            return UITableViewCell()
+        }
+        
+        let contact: Contact = filteredContactList[indexPath.row]
+        cell.contactData(contact)
+        
+        return cell
+    }
+}
+
+// MARK: - UISearchBar Delegate
+extension ContactsViewController {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            // If search text is empty, show all data
+            filteredContactList = contactList
+        } else {
+            // Otherwise, filter results
+            filteredContactList = contactList.filter { $0.name!.lowercased().contains(searchText.lowercased()) }
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder() // dismiss keyboard
+    }
+}
+
+// MARK: - UI
+extension ContactsViewController {
     
     func setUpLayout() {
         view.addSubview(headerView)
@@ -105,48 +125,5 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
             titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
         ])
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredContactList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListCell else {
-            return UITableViewCell()
-        }
-        
-        let contact: Contact = filteredContactList[indexPath.row]
-        cell.name.text = contact.name
-        cell.role.text = contact.role
-        
-        cell.photo.image = UIImage(named: contact.photo!)
-        cell.country.image = UIImage(named: contact.country!)
-        
-        
-        print(indexPath.row)
-        print(contactList[indexPath.row].name)
-        return cell
-    }
-    
-    // MARK: - UISearchBar Delegate
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            if searchText.isEmpty {
-                // If search text is empty, show all data
-                filteredContactList = contactList
-            } else {
-                // Otherwise, filter results
-                filteredContactList = contactList.filter { $0.name!.lowercased().contains(searchText.lowercased()) }
-            }
-            
-            tableView.reloadData()
-        }
-        
-        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            searchBar.resignFirstResponder() // dismiss keyboard
-        }
-    
-
-
-
 }
 

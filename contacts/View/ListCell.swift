@@ -40,19 +40,6 @@ class ListCell: UITableViewCell {
         selectionStyle = .default
         
         photo.translatesAutoresizingMaskIntoConstraints = false
-//        photo.layer.cornerRadius = 30
-//        photo.clipsToBounds = true
-
-        // Set frame or constraints first so it has a width/height
-//        photo.frame = CGRect(x: 50, y: 50, width: 70, height: 70)
-
-        // Make it circular
-//        photo.layer.cornerRadius = 35
-//        photo.clipsToBounds = true
-//
-//        // Scale image properly
-//        photo.contentMode = .scaleAspectFill
-
             
         // Name
         name.font = .boldSystemFont(ofSize: 17)
@@ -69,20 +56,6 @@ class ListCell: UITableViewCell {
             
         // Flag
         country.translatesAutoresizingMaskIntoConstraints = false
-        // Set frame or constraints first so it has a width/height
-//        country.frame = CGRect(x: 50, y: 50, width: 36, height: 36)
-
-        // Make it circular
-//        country.layer.cornerRadius = 18
-//        country.clipsToBounds = true
-//
-//        // Scale image properly
-//        country.contentMode = .scaleAspectFill
-
-//        country.layer.cornerRadius = 15
-//        country.clipsToBounds = true
-//        country.contentMode = .scaleAspectFit
-        
             
         contentView.addSubview(photo)
         contentView.addSubview(name)
@@ -108,6 +81,13 @@ class ListCell: UITableViewCell {
             country.heightAnchor.constraint(equalToConstant: 26),
             ])
         
-//        name.fon
+    }
+    
+    func contactData(_ contact: Contact) {
+        name.text = contact.name
+        role.text = contact.role
+        
+        photo.image = UIImage(named: contact.photo!)
+        country.image = UIImage(named: contact.country!)
     }
 }
