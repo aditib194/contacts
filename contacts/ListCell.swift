@@ -5,4 +5,72 @@
 //  Created by Aditi Bansal on 8/26/25.
 //
 
-import Foundation
+import UIKit
+
+class ListCell: UITableViewCell {
+    let photo = UIImageView()
+    let name = UILabel()
+    let role = UILabel()
+    let country = UIImageView()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupViews()
+    }
+    
+    func setupViews() {
+        selectionStyle = .default
+        
+        photo.translatesAutoresizingMaskIntoConstraints = false
+        photo.layer.cornerRadius = 30
+        photo.clipsToBounds = true
+            
+        // Name
+        name.font = .boldSystemFont(ofSize: 17)
+        name.translatesAutoresizingMaskIntoConstraints = false
+            
+        // Role (with capsule background)
+        role.font = .systemFont(ofSize: 11)
+        role.textColor = .white
+        role.backgroundColor = .systemTeal
+        role.layer.cornerRadius = 5
+        role.clipsToBounds = true
+        role.textAlignment = .center
+        role.translatesAutoresizingMaskIntoConstraints = false
+            
+        // Flag
+        country.translatesAutoresizingMaskIntoConstraints = false
+        country.contentMode = .scaleAspectFit
+            
+        contentView.addSubview(photo)
+        contentView.addSubview(name)
+        contentView.addSubview(role)
+        contentView.addSubview(country)
+        
+        NSLayoutConstraint.activate([
+            photo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            photo.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            photo.widthAnchor.constraint(equalToConstant: 60),
+            photo.heightAnchor.constraint(equalToConstant: 60),
+            
+            name.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            name.leadingAnchor.constraint(equalTo: photo.trailingAnchor, constant: 12),
+            
+            role.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 4),
+            role.leadingAnchor.constraint(equalTo: photo.trailingAnchor, constant: 12),
+            role.heightAnchor.constraint(equalToConstant: 20),
+            
+            country.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            country.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            country.widthAnchor.constraint(equalToConstant: 30),
+            country.heightAnchor.constraint(equalToConstant: 20),
+            ])
+        
+//        name.fon
+    }
+}

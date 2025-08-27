@@ -16,6 +16,7 @@
 		49D590672E5DFA4B00BD54F1 /* contactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D590662E5DFA4B00BD54F1 /* contactsTests.swift */; };
 		49D590712E5DFA4B00BD54F1 /* contactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D590702E5DFA4B00BD54F1 /* contactsUITests.swift */; };
 		49D590732E5DFA4B00BD54F1 /* contactsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D590722E5DFA4B00BD54F1 /* contactsUITestsLaunchTests.swift */; };
+		49D590822E5DFDC700BD54F1 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D590812E5DFDC700BD54F1 /* ListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		49D5906C2E5DFA4B00BD54F1 /* contactsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contactsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D590702E5DFA4B00BD54F1 /* contactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactsUITests.swift; sourceTree = "<group>"; };
 		49D590722E5DFA4B00BD54F1 /* contactsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		49D590812E5DFDC700BD54F1 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				49D5904F2E5DFA4300BD54F1 /* AppDelegate.swift */,
 				49D590512E5DFA4300BD54F1 /* SceneDelegate.swift */,
 				49D590532E5DFA4300BD54F1 /* ViewController.swift */,
+				49D590812E5DFDC700BD54F1 /* ListCell.swift */,
 				49D590552E5DFA4400BD54F1 /* Main.storyboard */,
 				49D590582E5DFA4900BD54F1 /* Assets.xcassets */,
 				49D5905A2E5DFA4900BD54F1 /* LaunchScreen.storyboard */,
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49D590542E5DFA4300BD54F1 /* ViewController.swift in Sources */,
+				49D590822E5DFDC700BD54F1 /* ListCell.swift in Sources */,
 				49D590502E5DFA4300BD54F1 /* AppDelegate.swift in Sources */,
 				49D590522E5DFA4300BD54F1 /* SceneDelegate.swift in Sources */,
 			);
